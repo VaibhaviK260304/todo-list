@@ -3,6 +3,8 @@ import Add from "./add.png"
 import TodoCard from "./../../component/TodoCard/todoCard"
 import {useEffect, useState } from "react"
 import toast, { Toaster } from 'react-hot-toast';
+import Swal from "sweetalert2";
+
 
 function Home() {
 
@@ -40,16 +42,26 @@ function Home() {
     }, [todoList])
 
     function deleteItem(index){
-        const newTodoList = todoList.filter((item, i)=>{
-            if(i == index){
-                return false
+        Swal.fire({
+            title: "Are you sure?",
+            text:"You want to delete the task!!",
+            icon: "warning",
+            showCancelButton: true
+        }).then((result)=>{
+            if(!result.isConfirmed){
+                return
             }
-            else{
-                return true
-            }
-        })
+            const newTodoList = todoList.filter((item, i)=>{
+                if(i == index){
+                    return false
+                }
+                else{
+                    return true
+                }
+            })
         setTodoList(newTodoList)
-      }
+      })
+}
 
     return (
         <div>
