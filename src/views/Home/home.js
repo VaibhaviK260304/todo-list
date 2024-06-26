@@ -6,11 +6,32 @@ import toast, { Toaster } from 'react-hot-toast';
 
 function Home() {
 
+    // const todoList =[
+    //     "Go for morning walk",
+    //     // "Do Yoga",
+    //     // "Have Breakfast",
+    //     // "Get ready for college",
+    //     // "Attend classes",
+    //     // "Do assignments",
+    //     // "Have lunch",
+    //     // "Submit assignments",
+    //     // "come back to hostel",
+    //     // "Call Mom"
+    //     // "Have dinner",
+    //     // "Sleep on time"
+    // ]
 
     const [todoList, setTodoList] = useState([{task: "Go for walk", type:"daily"}])
     const [newTodo, setNewTodo] = useState("")
     const [type, setType] = useState("")
 
+    useEffect(()=>{
+        const storedTodoList = localStorage.getItem("todoList")
+
+        if(storedTodoList){
+            setTodoList(JSON.parse(storedTodoList))
+        }
+    },[])
 
     useEffect(()=>{
         if(todoList.length === 0) return
