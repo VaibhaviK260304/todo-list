@@ -2,7 +2,7 @@ import "./todoCard.css"
 import React from 'react'
 import Bin from "./bin.png"
 
-function TodoCard({task, type}){
+function TodoCard({index, task, type, deleteItem}){
 
   const Category_emoji_map = {
     daily: "📅",
@@ -20,7 +20,9 @@ function TodoCard({task, type}){
 
   return (
     <div className="todo-card">
-            <img src={Bin} className="delete"/> 
+            <img src={Bin} className="delete" onClick={()=>{
+              deleteItem(index)
+            }}/> 
         {task} 
         <span className="type-task" style={{
           backgroundColor: Category_colors[type]

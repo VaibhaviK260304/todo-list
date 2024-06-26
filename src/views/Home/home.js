@@ -39,6 +39,17 @@ function Home() {
         localStorage.setItem("todoList", JSON.stringify(todoList))
     }, [todoList])
 
+    function deleteItem(index){
+        const newTodoList = todoList.filter((item, i)=>{
+            if(i == index){
+                return false
+            }
+            else{
+                return true
+            }
+        })
+        setTodoList(newTodoList)
+      }
 
     return (
         <div>
@@ -49,7 +60,7 @@ function Home() {
 
                     const {task, type} = todoItem
 
-                    return <TodoCard key={i} task={task} type={type}/>   
+                    return <TodoCard key={i} task={task} type={type} index={i} deleteItem={deleteItem}/>   
                 })}
 
 
