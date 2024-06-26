@@ -1,5 +1,6 @@
 import "./todoCard.css"
 import React from 'react'
+import Bin from "./bin.png"
 
 function TodoCard({task, type}){
 
@@ -19,6 +20,7 @@ function TodoCard({task, type}){
 
   return (
     <div className="todo-card">
+            <img src={Bin} className="delete"/> 
         {task} 
         <span className="type-task" style={{
           backgroundColor: Category_colors[type]

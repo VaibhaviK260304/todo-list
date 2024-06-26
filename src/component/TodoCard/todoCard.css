@@ -6,17 +6,44 @@
     font-size: large;
     position: relative;
     background-color:rgb(236, 202, 157);
+    display: flex;
+    align-items: center;
 }
 .type-task{
     font-size: 15px;
     position: absolute;
     top: 5px;
-    right: 5px;
+    right: 10px;
     background-color: antiquewhite;
     padding: 1px 5px;
     width: 90px;
     text-align: center;
     border-radius: 5px;
     border: 0.5px solid black;
-
+}
+.delete{
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+@keyframes delete{
+    0%{
+        transform: rotate(-15deg);
+    }
+    25%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(15deg);
+    }
+    75%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(-15deg);
+    }
+}
+.delete:hover{
+    transform: scale(1.2);
+    animation: delete 0.5s infinite;
 }
